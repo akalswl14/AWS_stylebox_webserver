@@ -1,0 +1,54 @@
+td.YesStatus{
+    color: red;
+}
+
+.btn_fixed_top input[name='input_comments']{
+    border: solid rgb(200, 200, 200);
+    border-width: 1px;
+    background-color: rgb(255, 250, 250);
+    box-sizing: border-box;
+    color: black;
+}
+
+#brand_table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
+  
+#brand_table td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+#brand_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+#brand_table tr:hover {background-color: #ddd;}
+  
+#brand_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: rgb(146, 211, 255);
+    color: white;
+  }
+
+.fa-instagram {
+  color: black;
+}
+th button{
+  padding: 0px 10px;
+  border: none;
+  background: none;
+  color: rgb(224, 255, 255);
+}
+#crawling_button{
+  border:none;
+  background: none;
+  font-size: 24px;
+}
+.lastupdatedate{
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+}

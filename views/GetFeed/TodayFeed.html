@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Today's Data</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/todayfeed.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/topbutton.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/basic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/todayfeed.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/">ADMINISTRATOR</a>
+        <a href="/brandexcel">Upload Brand Excel</a>
+        <a href="/styleexcel">Upload Style Excel</a>
+        <a class="active" href="/getfeed">Today's Data</a>
+        <a href="/">Style Classification</a>
+    </div>
+    <div class="container">
+        <form name="fboardlist" id="fboardlist" onsubmit="return fboardlist_submit(this);" method="post">
+            <div class="btn_fixed_top">
+                <div class="lastupdatedate">
+                    <%- lastupdatedate %>
+                </div>
+                <%- icondata %>
+                <input id="checkstatus_button" type="button" name="act_button" value="check crawling" onclick="document.pressed=this.value" class="btn_02 btn">
+                <input type="submit" name="act_button" value="modify reviewstatus" onclick="document.pressed=this.value"
+                    class="btn_02 btn">
+                <input type="text" name="input_comments">
+                <input type="submit" name="act_button" value="modify comments" onclick="document.pressed=this.value"
+                    class="btn_02 btn">
+                <input type="submit" name="act_button" value="delete brand" onclick="document.pressed=this.value"
+                    class="btn_02 btn">
+                <input type="submit" name="act_button" value="view details" onclick="document.pressed=this.value"
+                    class="btn_02 btn">
+            </div>
+            <div class="under_container">
+                <table id="brand_table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <input type="checkbox" name="chkall" value="1" id="chkall"
+                                    onclick="check_all(this.form)">
+                            </th>
+                            <th scope="col">Brand<button type="button" onclick="sortTable(1,true)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">UpdatedFeed<button type="button" onclick="sortTable(2,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">TodayDownload<button type="button" onclick="sortTable(3,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">FeedNum<button type="button" onclick="sortTable(4,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">NewFeed<button type="button" onclick="sortTable(5,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">Download<button type="button" onclick="sortTable(6,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">Follower<button type="button" onclick="sortTable(7,false)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">Instagram</th>
+                            <th scope="col">reviewstatus<button type="button"
+                                    onclick="sortTable(8,true)"><i class="fa fa-sort"></i></button></th>
+                            <th scope="col">comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- todaydata %>
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload Brand Excel</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/basic.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/excelstyle.css">
+    <link rel="stylesheet" type="text/css" href="/js/excel.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/">ADMINISTRATOR</a>
+        <a class="active" href="/brandexcel">Upload Brand Excel</a>
+        <a href="/styleexcel">Upload Style Excel</a>
+        <a href="/getfeed">Today's Data</a>
+        <a href="/">Style Classification</a>
+    </div>
+    <div class="container">
+        <div class="under_container">
+            <form onsubmit="return fboardlist_submit();" method="post" enctype="multipart/form-data">
+                <label for="myfile">Select a file</label><br>
+                <input type="file" id="myfile" name="myfile"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

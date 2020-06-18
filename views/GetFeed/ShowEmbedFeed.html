@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select Feed</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/embedfeed.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/topbutton.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/nav.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/basic.css">
+    <script type="text/javascript" src="/js/embedfeed.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/">ADMINISTRATOR</a>
+        <a href="/brandexcel">Upload Brand Excel</a>
+        <a href="/styleexcel">Upload Style Excel</a>
+        <a class="active" href="/getfeed">Today's Data</a>
+        <a href="/">Style Classification</a>
+    </div>
+    <div class="container">
+        <form action ="http://localhost:3001/downloadfeed" name="fboardlist" id="fboardlist" onsubmit="return fboardlist_submit(this);" method="post">
+            <div class="btn_fixed_top">
+                <input type="button" name="act_button" value="Unchecked" onclick="uncheck()" class="btn_02 btn">
+                <input type="submit" name="act_button" value="Download" onclick="document.pressed=this.value"
+                    class="btn_02 btn">
+            </div>
+            <%- feeddata %>
+        </form>
+    </div>
+</body>
+
+</html>
