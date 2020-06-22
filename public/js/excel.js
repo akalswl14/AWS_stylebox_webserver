@@ -24,4 +24,3 @@ function readExcel() {
     };
     document.getElementById("myfile").value = json_data
     reader.readAsBinaryString(input.files[0]);
-}
