@@ -3,7 +3,7 @@ $(document).ready(function () {
         $('#crawling_button').hide();
         $.ajax({
             type: "get",
-            url: "http://localhost:3001/firstcrawling"
+            url: "http://ec2-54-255-228-197.ap-southeast-1.compute.amazonaws.com:8080/firstcrawling"
         });
     });
     $('#checkstatus_button').click(function () {
