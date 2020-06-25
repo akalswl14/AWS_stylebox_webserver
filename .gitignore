@@ -1,2 +1,4 @@
 
 node_modules/
+
+aws_ddb_start.js
