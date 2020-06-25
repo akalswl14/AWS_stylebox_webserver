@@ -19,7 +19,7 @@ var EditJson = {
             }
             // BrandName으로 <Brand> 테이블 조회. true면 있고, false 면 없음.
             let data = await checkBrandTable(BrandName);
-            if(Object.keys(data).length > 0){
+            if (Object.keys(data).length > 0) {
                 continue;
             }
             var tmpidx = instaID.indexOf('instagram.com/') + 14;

@@ -11,7 +11,6 @@ var router = express.Router();
 * BaseUrl :/getfeed
 */
 
-var CheckUpdate = require('./CheckUpdate');
 var UpdateData = require('./UpdateData');
 var SelectFeed = require('./SelectFeed');
 var GetTodayData = require('./GetTodayData');
