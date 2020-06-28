@@ -57,7 +57,7 @@ router.get('/selectfeed', function (req, res) {
     SelectFeed.getembed(req, res);
 });
 
-router.get('/crawlingstatus', function (req, res) {
+router.get('/crawlingstatus', async function (req, res) {
     let dbData = await checkLastUpdateDateTable();
     if (dbData.Item.crawlingstatus == true) {
         res.send({ status: true });

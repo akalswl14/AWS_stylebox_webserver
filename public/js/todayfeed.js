@@ -3,7 +3,7 @@ $(document).ready(function () {
         $('#crawling_button').hide();
         $.ajax({
             type: "get",
-            url: "http://ec2-54-255-228-197.ap-southeast-1.compute.amazonaws.com:8080/firstcrawling"
+            url: "http://stylebox-manage-crawlingserver-dev.ap-southeast-1.elasticbeanstalk.com/firstcrawling"
         });
     });
     $('#checkstatus_button').click(function () {
