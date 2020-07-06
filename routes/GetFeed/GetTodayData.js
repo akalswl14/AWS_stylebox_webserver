@@ -103,4 +103,19 @@ async function scanallBrandInfoTable() {
     console.log(err);
   }
 }
+function GetTodayDate() {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = new String(date.getMonth() + 1);
+  var day = new String(date.getDate());
+
+  if (month.length == 1) {
+    month = "0" + month;
+  }
+  if (day.length == 1) {
+    day = "0" + day;
+  }
+  var TodayDate = year + "-" + month + "-" + day;
+  return TodayDate;
+}
 module.exports = GetData;
