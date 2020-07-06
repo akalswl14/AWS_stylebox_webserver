@@ -102,42 +102,56 @@ function MakeEachDateBase(callback) {
   callback();
 }
 async function GetDateList(BrandIDList) {
-    let dbData = await scanCrawlingFeedTable(BrandIDList);
-    dbData = dbData.Items;
-    for (var EachData in dbData) {
-        var date = dbData[EachData].Date;
-        if (BrandIDList.length > 1 && dbData[EachData].DownloadNum > 0) {
-            continue;
-        }
-        DataList.push(dbData[EachData]);
-        if (DateList.includes(date) == false) {
-            DateList.push(date)
-        }
+  let dbData = await getCrawlingFeedTable(BrandIDList);
+  for (var EachData in dbData) {
+    var date = dbData[EachData].Date;
+    if (BrandIDList.length > 1 && dbData[EachData].Check == true) {
+      continue;
     }
-    DateList.sort(date_ascending);
+    DataList.push(dbData[EachData]);
+    if (DateList.includes(date) == false) {
+      DateList.push(date);
+    }
+  }
+  DateList.sort(date_ascending);
 }
-async function scanCrawlingFeedTable(BrandIDList) {
-    try {
-        var KeysData = {};
-        var FilterData = '';
-        for (i = 0; i < BrandIDList.length; i++) {
-            var brandID = parseInt(BrandIDList[i]);
-            var tmp = ':b' + i;
-            if (i > 0) {
-                FilterData += ' or '
-            }
-            FilterData += 'brandID = ' + tmp;
-            KeysData[tmp] = brandID;
-        }
+async function getCrawlingFeedTable(BrandIDList) {
+  try {
+    var CrawlingFeedData = [];
+    for (i = 0; i < BrandIDList.length; i++) {
+      var brandID = parseInt(BrandIDList[i]);
+      var dbData = await queryFeedIDListTable(brandID);
+      var FeedIDList = dbData.Items;
+      for (j = 0; j < FeedIDList.length; j++) {
+        var FeedID = FeedIDList[j].FeedID;
         var params = {
-            TableName: 'CrawlingFeed',
-            FilterExpression: FilterData,
-            ExpressionAttributeValues: KeysData
+          TableName: "CrawlingFeed",
+          Key: {
+            FeedID: FeedID,
+          },
         };
-        let data = await docClient.scan(params).promise();
-        return data;
-    } catch (err) {
-        console.log(err);
+        let data = await docClient.get(params).promise();
+        CrawlingFeedData.push(data.Item);
+      }
     }
+    return CrawlingFeedData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+async function queryFeedIDListTable(brandID) {
+  try {
+    var params = {
+      TableName: "FeedIDList",
+      ProjectionExpression: "FeedID",
+      KeyConditionExpression: "brandID = :bID",
+      ExpressionAttributeValues: { ":bID": brandID },
+    };
+    let data = await docClient.query(params).promise();
+    return data;
+  } catch (err) {
+    console.log("while query FeedIDList");
+    console.log(err);
+  }
 }
 module.exports = selectfeed;
